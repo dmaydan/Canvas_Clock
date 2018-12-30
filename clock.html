@@ -7,16 +7,13 @@
 <script>
 	canvas = document.getElementsByTagName("canvas")[0];
 	context = canvas.getContext("2d");
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	window.addEventListener("resize", () => {
-		init();
-	});
+	canvas.width = 600;
+	canvas.height = 600;
 	function draw_clock() {
 		var lastLocation = 0;
-		var cx = window.innerWidth/2;
-		var cy = window.innerHeight/2;
-		var radius = window.innerWidth < window.innerHeight ? window.innerWidth/2.2 : window.innerHeight/2.2;
+		var cx = 300;
+		var cy = 300;
+		var radius = 250;
 		for (let i = 0; i < 12; i++) {
 			context.lineWidth = 45;
 			let newLocation;
@@ -89,16 +86,11 @@
 		context.lineTo(cx - ((3*cx+hourX)/4-cx), cy - ((3*cy+hourY)/4-cy));
 		context.stroke();
 	}
-	function init (){
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-	}
 	function animate() {
 		context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 		draw_clock();
 		requestAnimationFrame(animate);
 	}
-	//draw_clock();
 	requestAnimationFrame(animate);
 	
 </script>
